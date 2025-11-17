@@ -2,6 +2,7 @@
 
 namespace Cometcast\OpenApi\Laravel;
 
+use Cometcast\Openapi\OpenIdProvider;
 use Illuminate\Support\ServiceProvider;
 
 class PhpSdkLaravelServiceProvider extends ServiceProvider
@@ -53,8 +54,9 @@ class PhpSdkLaravelServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'cometcast-openapi');
 
         // Register the main class to use with the facade
-        $this->app->singleton('php-sdk-laravel', function () {
-            return new PhpSdkLaravel;
+        $this->app->singleton(OpenIdProvider::class, function ($app) {
+            $config = $app['config']->get('cometcast-openapi.oidc');
+            return new OpenIdProvider($config);
         });
     }
 }
