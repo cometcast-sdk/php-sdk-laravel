@@ -12,5 +12,8 @@ return [
         'scopes'        => env("COMETCAST_OPENAPI_SCOPES"),
         'pkce_method'   => "S256",
         'verify'        => env("COMETCAST_OPENAPI_SSL_VERIFY", false),  // 開發可用 略過 SSL
-    ]
+    ],
+
+    'openapi_base_url'      => env("COMETCAST_OPENAPI_BASE_URL", ""),
+    'openapi_ssl_verify'    => env("COMETCAST_OPENAPI_SSL_VERIFY", false),  // 開發可用 略過 SSL
 ];

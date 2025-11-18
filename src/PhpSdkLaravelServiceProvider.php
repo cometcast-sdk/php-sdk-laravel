@@ -2,6 +2,7 @@
 
 namespace Cometcast\OpenApi\Laravel;
 
+use Cometcast\Openapi\HttpClient\OpenApiHttpClientFactory;
 use Cometcast\Openapi\OpenIdProvider;
 use Illuminate\Support\ServiceProvider;
 
@@ -57,6 +58,16 @@ class PhpSdkLaravelServiceProvider extends ServiceProvider
         $this->app->singleton(OpenIdProvider::class, function ($app) {
             $config = $app['config']->get('cometcast-openapi.oidc');
             return new OpenIdProvider($config);
+        });
+
+        $this->app->singleton(OpenApiHttpClientFactory::class, function ($app) {
+            $factory =  new OpenApiHttpClientFactory(
+                $app['config']->get('cometcast-openapi.openapi_base_url')
+            );
+
+            $factory->setSSLVerify($app['config']->get('cometcast-openapi.openapi_ssl_verify'));
+
+            return $factory;
         });
     }
 }

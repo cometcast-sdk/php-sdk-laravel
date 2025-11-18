@@ -44,8 +44,11 @@ COMETCAST_OPENAPI_AUTH_BASEURL=https://your-auth-server.com
 # OIDC 授權範圍
 COMETCAST_OPENAPI_SCOPES=openid,profile,email
 
+# OpenAPI 基礎 URL
+COMETCAST_OPENAPI_BASE_URL=https://your-api-server.com
+
 # SSL 驗證設定（開發環境可設為 false）
-COMETCAST_OPENAPI_SSL_VERIFY=true
+COMETCAST_OPENAPI_SSL_VERIFY=false
 ```
 
 ## 使用方式
