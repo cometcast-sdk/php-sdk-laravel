@@ -17,7 +17,7 @@
     ],
     "require": {
         "php": "^7.2|^8.0",
-        "cometcast/openapi-php-sdk": "v20251118-beta",
+        "cometcast/openapi-php-sdk": "v20251127-beta",
         "illuminate/support": "^7.0|^8.0|^9.0|^10.0|^11.0|^12.0"
     },
     "require-dev": {
